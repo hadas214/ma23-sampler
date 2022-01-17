@@ -1,6 +1,9 @@
 package mil.matmon.configuration;
 
+import mil.matmon.configuration.database.Database;
+import java.util.List;
+
 public interface DatabaseConfigParser {
 
-    public String parser(String name);
+    public List<Database> parser(String name);
 }
