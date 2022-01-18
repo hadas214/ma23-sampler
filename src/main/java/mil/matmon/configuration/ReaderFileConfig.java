@@ -1,12 +1,6 @@
 package mil.matmon.configuration;
 
-import mil.matmon.configuration.database.Database;
-import mil.matmon.configuration.database.TheConstantSampler;
-import mil.matmon.csv.CsvParser;
-
 import java.io.*;
-import java.util.List;
-import java.util.Properties;
 
 public class ReaderFileConfig {
     public String FILE_NAME;

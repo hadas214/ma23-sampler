@@ -38,7 +38,7 @@ public class WriteFileConfig {
             try {
                 // Serialize Java object info JSON file.
                 JsonObject database = new JsonObject();
-                database.put("Object", this.objects.get(i).toString());
+                database.put("Report", this.objects.get(i).toString());
                 // write JSON to file
                 Jsoner.serialize(database, writer);
                 lines++;

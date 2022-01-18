@@ -1,6 +1,5 @@
 package mil.matmon.configuration.database;
 
-import com.fasterxml.jackson.annotation.*;
 public class TheConstantSampler extends Database {
 
     public TheConstantSampler(String mdaCode, String idNum, String idType, String firstName, String lastName, String city,

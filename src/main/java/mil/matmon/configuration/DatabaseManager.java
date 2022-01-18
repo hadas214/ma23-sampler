@@ -28,9 +28,15 @@ public class DatabaseManager {
         return property;
     }
 
-    public void convertStringToObject() throws IOException {
-        this.objects = this.CSV_PARSER.parser(this.propertyAsString());
-        System.out.println("Done convert string to objects");
+    public void convertStringToObject() {
+        try {
+            this.objects = this.CSV_PARSER.parser(this.propertyAsString());
+            System.out.println("Done convert string to objects");
+        }
+        catch (IOException e)
+        {
+            System.out.println("fail");
+        }
     }
     public void writeToJson()
     {
