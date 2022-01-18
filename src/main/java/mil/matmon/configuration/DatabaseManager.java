@@ -1,24 +1,32 @@
 package mil.matmon.configuration;
 
+import com.google.common.io.Files;
 import mil.matmon.configuration.database.Database;
 import mil.matmon.json.WriteFileConfig;
 import mil.matmon.csv.CsvParser;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DatabaseManager {
     public static final String FILE_NAME = "src/main/resources/MadaReports.csv";
+    public static final String CONVERT_TO = "json";
+    public final Map<String, DatabaseConfigParser> allKindsFilesToParse;
+    public final Map<String, DatabaseConfigWriter> allKindsFilesToWrite;
     public final ReaderFileConfig READER_FILE_CONFIG;
-    public final CsvParser CSV_PARSER;
     private List<Database> objects;
 
     public DatabaseManager() {
         this.READER_FILE_CONFIG = new ReaderFileConfig(FILE_NAME);
         System.out.println("Connection was good");
-        this.CSV_PARSER = new CsvParser();
+        this.allKindsFilesToParse = new HashMap<>();
+        this.allKindsFilesToWrite = new HashMap<>();
         this.objects = new ArrayList<>();
+        //Boot maps with optional values
+        this.bootSettings();
     }
 
     public String propertyAsString() throws IOException {
@@ -27,22 +35,27 @@ public class DatabaseManager {
         System.out.println("Read well the property");
         return property;
     }
+    public void bootSettings(){
+        //Add here your classes
+        this.allKindsFilesToParse.put("csv", new CsvParser());
+        this.allKindsFilesToWrite.put("json", new WriteFileConfig());
+    }
 
     public void convertStringToObject() {
         try {
-            this.objects = this.CSV_PARSER.parser(this.propertyAsString());
+            String extension = Files.getFileExtension(FILE_NAME);
+            this.objects = this.allKindsFilesToParse.get(extension).parser(this.propertyAsString());
             System.out.println("Done convert string to objects");
         }
         catch (IOException e)
         {
-            System.out.println("fail");
+            System.out.println("Can't convert string to list objects");
         }
     }
     public void writeToJson()
     {
-        WriteFileConfig w = new WriteFileConfig(this.objects);
         try {
-            w.writer();
+            this.allKindsFilesToWrite.get(CONVERT_TO).writer(this.objects);
             System.out.println("Successfully written");
         }
         catch (Exception e)

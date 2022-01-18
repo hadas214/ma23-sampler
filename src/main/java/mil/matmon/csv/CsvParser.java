@@ -49,6 +49,7 @@ public class CsvParser implements DatabaseConfigParser {
                         ,arr[7],arr[8],arr[9],arr[10],arr[11]);
                 this.objects.add(t);
             }
+
         }
         catch (IOException e)
         {
