@@ -77,4 +77,22 @@ public abstract class Database {
     public String getGetDate() {
         return GetDate;
     }
+
+    @Override
+    public String toString() {
+        return "Database{" +
+                "MdaCode='" + MdaCode + '\'' +
+                ", IdNum='" + IdNum + '\'' +
+                ", IdType='" + IdType + '\'' +
+                ", FirstName='" + FirstName + '\'' +
+                ", LastName='" + LastName + '\'' +
+                ", City='" + City + '\'' +
+                ", Street='" + Street + '\'' +
+                ", BuildingNumber='" + BuildingNumber + '\'' +
+                ", Barcode='" + Barcode + '\'' +
+                ", GetDate='" + GetDate + '\'' +
+                ", TakeDate='" + TakeDate + '\'' +
+                ", ResultDate='" + ResultDate + '\'' +
+                '}';
+    }
 }
