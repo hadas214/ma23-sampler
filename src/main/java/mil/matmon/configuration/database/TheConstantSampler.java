@@ -1,30 +1,107 @@
 package mil.matmon.configuration.database;
 
+import com.fasterxml.jackson.annotation.*;
 public class TheConstantSampler extends Database {
-    private String MdaCode;
-    private String IdNum;
-    private String IdType;
-    private String FirstName;
-    private String LastName;
-    private String City;
-    private String Street;
-    private String BuildingNumber;
-    private String Barcode;
-    private String GetDate;
-    private String TakeDate;
 
-    public TheConstantSampler(String name, String mdaCode, String idNum, String idType, String firstName, String lastName, String city, String street, String buildingNumber, String barcode, String getDate, String takeDate) {
-        super(name);
-        this.MdaCode = mdaCode;
-        this.IdNum = idNum;
-        this.IdType = idType;
-        this.FirstName = firstName;
-        this.LastName = lastName;
-        this.City = city;
-        this.Street = street;
-        this.BuildingNumber = buildingNumber;
-        this.Barcode = barcode;
-        this.GetDate = getDate;
-        this.TakeDate = takeDate;
+    public TheConstantSampler(String mdaCode, String idNum, String idType, String firstName, String lastName, String city,
+                              String street, String buildingNumber, String barcode, String getDate, String takeDate, String resultDate) {
+        super(mdaCode,idNum, idType, firstName,lastName, city,
+                street, buildingNumber, barcode, getDate, takeDate, resultDate);
+    }
+
+    public String getMdaCode() {
+        return MdaCode;
+    }
+
+    public void setMdaCode(String mdaCode) {
+        MdaCode = mdaCode;
+    }
+
+    public String getIdNum() {
+        return IdNum;
+    }
+
+    public void setIdNum(String idNum) {
+        IdNum = idNum;
+    }
+
+    public String getIdType() {
+        return IdType;
+    }
+
+    public void setIdType(String idType) {
+        IdType = idType;
+    }
+
+    public String getFirstName() {
+        return FirstName;
+    }
+
+    public void setFirstName(String firstName) {
+        FirstName = firstName;
+    }
+
+    public String getLastName() {
+        return LastName;
+    }
+
+    public void setLastName(String lastName) {
+        LastName = lastName;
+    }
+
+    public String getCity() {
+        return City;
+    }
+
+    public void setCity(String city) {
+        City = city;
+    }
+
+    public String getStreet() {
+        return Street;
+    }
+
+    public void setStreet(String street) {
+        Street = street;
+    }
+
+    public String getBuildingNumber() {
+        return BuildingNumber;
+    }
+
+    public void setBuildingNumber(String buildingNumber) {
+        BuildingNumber = buildingNumber;
+    }
+
+    public String getBarcode() {
+        return Barcode;
+    }
+
+    public void setBarcode(String barcode) {
+        Barcode = barcode;
+    }
+
+    public String getTakeDate() {
+        return TakeDate;
+    }
+
+    public void setTakeDate(String takeDate) {
+        TakeDate = takeDate;
+    }
+
+    public String getResultDate() {
+        return super.getResultDate();
+    }
+
+    public void setResultDate(String resultDate) {
+        ResultDate = resultDate;
+    }
+
+    public String getGetDate() {
+        return GetDate;
+    }
+
+    public void setGetDate(String getDate) {
+        GetDate = getDate;
     }
 }

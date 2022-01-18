@@ -1,16 +1,26 @@
 package mil.matmon.configuration;
 
+import mil.matmon.configuration.database.Database;
+import mil.matmon.configuration.database.TheConstantSampler;
+import mil.matmon.csv.CsvParser;
+
 import java.io.*;
+import java.util.List;
 import java.util.Properties;
 
 public class ReaderFileConfig {
-    public static final String FILE_NAME = "src/main/resources/MadaReports.csv";
+    public String FILE_NAME;
 
-    public static InputStream inputStream() throws IOException{
+    public ReaderFileConfig(String FILE_NAME)
+    {
+        this.FILE_NAME = FILE_NAME;
+    }
+
+    public InputStream inputStream() throws IOException{
         InputStream iStream = null;
         try {
             // Loading properties file from the classpath
-            iStream = new FileInputStream(FILE_NAME);
+            iStream = new FileInputStream(this.FILE_NAME);
             if(iStream == null){
                 throw new IOException("File not found");
             }
@@ -29,10 +39,5 @@ public class ReaderFileConfig {
             }
         }
         return resultStringBuilder.toString();
-    }
-
-    public static void main(String[] args) throws IOException {
-        ReaderFileConfig r = new ReaderFileConfig();
-        System.out.println(r.readFromInputStream());
     }
 }
